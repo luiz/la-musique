@@ -18,70 +18,62 @@ import com.github.luiz.lamusique.models.Artist;
 
 @Controller
 @Path("/songs")
-public class SongController
-{
+public class SongController {
 
-   @Inject
-   private SongDao songDao;
-   @Inject
-   private ArtistDao artistDao;
-   @Inject
-   private Validator validator;
-   @Inject
-   private Result result;
+	@Inject
+	private SongDao songDao;
+	@Inject
+	private ArtistDao artistDao;
+	@Inject
+	private Validator validator;
+	@Inject
+	private Result result;
 
-   @Get("/form")
-   public void formAdd(Song song)
-   {
-      result.include("song", song);
-      loadFormDependencies();
-   }
+	@Get("/form")
+	public void formAdd(Song song) {
+		result.include("song", song);
+		loadFormDependencies();
+	}
 
-   private void loadFormDependencies()
-   {
-      result.include("artists", artistDao.all());
-   }
+	private void loadFormDependencies() {
+		result.include("artists", artistDao.all());
+	}
 
-   @Post("")
-   @Transactional
-   public void save(@Valid Song song)
-   {
-      validator.onErrorForwardTo(SongController.class).formAdd(song);
-      songDao.save(song);
-      result.redirectTo(SongController.class).list();
-   }
+	@Post("")
+	@Transactional
+	public void save(@Valid Song song) {
+		validator.onErrorForwardTo(SongController.class).formAdd(song);
+		songDao.save(song);
+		result.redirectTo(SongController.class).list();
+	}
 
-   @Get("/{song.id}")
-   public void formUpdate(Song song)
-   {
-      result.include("song", songDao.findById(song.getId()));
-      loadFormDependencies();
-   }
+	@Get("/{song.id}")
+	public void formUpdate(Song song) {
+		result.include("song", songDao.findById(song.getId()));
+		loadFormDependencies();
+	}
 
-   @Get("")
-   public void list()
-   {
-      result.include("list", songDao.all());
-   }
+	@Get("")
+	public void list() {
+		result.include("list", songDao.all());
+	}
 
-   //just because get is easier here. Be my guest if you want to change.
-   @Get("/remove/{id}")
-   @Transactional
-   public void remove(Integer id)
-   {
-      Song song = songDao.findById(id);
-      songDao.remove(song);
-      result.redirectTo(SongController.class).list();
-   }
+	// just because get is easier here. Be my guest if you want to change.
+	@Get("/remove/{id}")
+	@Transactional
+	public void remove(Integer id) {
+		Song song = songDao.findById(id);
+		songDao.remove(song);
+		result.redirectTo(SongController.class).list();
+	}
 
-   @Post("/{id}")
-   @Transactional
-   public void update(Integer id, @Valid Song song)
-   {
-      song.setId(id);
-      validator.onErrorForwardTo(SongController.class).formUpdate(song);
+	@Post("/{id}")
+	@Transactional
+	public void update(Integer id, @Valid Song song) {
+		song.setId(id);
+		validator.onErrorForwardTo(SongController.class).formUpdate(song);
 
-      songDao.update(song);
-      result.redirectTo(SongController.class).list();
-   }
+		songDao.update(song);
+		result.redirectTo(SongController.class).list();
+	}
 }

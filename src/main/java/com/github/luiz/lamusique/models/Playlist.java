@@ -7,31 +7,26 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Playlist
-{
+public class Playlist {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Integer id;
-   private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String name;
 
-   public Integer getId()
-   {
-      return this.id;
-   }
+	public Integer getId() {
+		return this.id;
+	}
 
-   public void setId(Integer id)
-   {
-      this.id = id;
-   }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-   public String getName()
-   {
-      return this.name;
-   }
+	public String getName() {
+		return this.name;
+	}
 
-   public void setName(String name)
-   {
-      this.name = name;
-   }
+	public void setName(String name) {
+		this.name = name;
+	}
 }

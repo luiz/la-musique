@@ -7,15 +7,13 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Path;
 
 @Controller
-public class HomeController
-{
+public class HomeController {
 
-   @Inject
-   private Result result;
+	@Inject
+	private Result result;
 
-   @Path("/")
-   public void index()
-   {
-      result.include("msg", "Message from your controller");
-   }
+	@Path("/")
+	public void index() {
+		result.include("msg", "Message from your controller");
+	}
 }
