@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.inject.Inject;
 
 import com.github.luiz.lamusique.models.Playlist;
 
@@ -14,23 +13,27 @@ public class PlaylistDao {
 	private EntityManager manager;
 
 	public List<Playlist> all() {
-		return manager.createQuery("select p from Playlist p", Playlist.class).getResultList();
+		return this.manager.createQuery("select p from Playlist p", Playlist.class).getResultList();
 	}
 
-	public void save(Playlist playlist) {
-		manager.persist(playlist);
+	public void save(final Playlist playlist) {
+		this.manager.persist(playlist);
 	}
 
-	public Playlist findById(Integer id) {
-		return manager.find(Playlist.class, id);
+	public Playlist findById(final Integer id) {
+		return this.manager.find(Playlist.class, id);
 	}
 
-	public void remove(Playlist playlist) {
-		manager.remove(playlist);
+	public void remove(final Playlist playlist) {
+		this.manager.remove(playlist);
 	}
 
-	public void update(Playlist playlist) {
-		manager.merge(playlist);
+	public void update(final Playlist playlist) {
+		this.manager.merge(playlist);
+	}
+
+	public Playlist load(final Playlist playlist) {
+		return findById(playlist.getId());
 	}
 
 }

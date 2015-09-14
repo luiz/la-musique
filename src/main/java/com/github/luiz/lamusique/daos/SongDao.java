@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.inject.Inject;
 
 import com.github.luiz.lamusique.models.Song;
 
@@ -14,23 +13,27 @@ public class SongDao {
 	private EntityManager manager;
 
 	public List<Song> all() {
-		return manager.createQuery("select s from Song s", Song.class).getResultList();
+		return this.manager.createQuery("select s from Song s", Song.class).getResultList();
 	}
 
-	public void save(Song song) {
-		manager.persist(song);
+	public void save(final Song song) {
+		this.manager.persist(song);
 	}
 
-	public Song findById(Integer id) {
-		return manager.find(Song.class, id);
+	public Song findById(final Integer id) {
+		return this.manager.find(Song.class, id);
 	}
 
-	public void remove(Song song) {
-		manager.remove(song);
+	public void remove(final Song song) {
+		this.manager.remove(song);
 	}
 
-	public void update(Song song) {
-		manager.merge(song);
+	public void update(final Song song) {
+		this.manager.merge(song);
+	}
+
+	public Song load(final Song song) {
+		return findById(song.getId());
 	}
 
 }
