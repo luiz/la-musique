@@ -11,6 +11,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<wildfly.plugin.version>1.0.2.Final</wildfly.plugin.version>
 		<postgresql.driver.groupId>org.postgresql</postgresql.driver.groupId>
 		<postgresql.driver.artifactId>postgresql</postgresql.driver.artifactId>
 		<postgresql.driver.version>9.4-1202-jdbc42</postgresql.driver.version>
@@ -91,6 +92,60 @@
 			<version>${postgresql.driver.version}</version>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>first-run</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<version>${wildfly.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>deploy_jdbc_driver</id>
+								<phase>package</phase>
+								<goals>
+									<goal>deploy-artifact</goal>
+								</goals>
+								<configuration>
+									<groupId>${postgresql.driver.groupId}</groupId>
+									<artifactId>${postgresql.driver.artifactId}</artifactId>
+									<version>${postgresql.driver.version}</version>
+									<name>postgresql</name>
+									<driver-name>postgresql</driver-name>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add_datasource</id>
+								<phase>package</phase>
+								<goals>
+									<goal>add-resource</goal>
+								</goals>
+								<configuration>
+									<address>subsystem=datasources,data-source=java:jboss/datasources/lamusique</address>
+									<resources>
+										<resource>
+											<properties>
+												<jndi-name>java:jboss/datasources/lamusique</jndi-name>
+												<connection-url>${db.jdbc.url}</connection-url>
+												<driver-class>org.postgresql.Driver</driver-class>
+												<driver-name>postgresql</driver-name>
+												<enabled>true</enabled>
+												<database-name>${postgresql.db.schema}</database-name>
+												<user-name>${postgresql.db.user}</user-name>
+												<password>${postgresql.db.password}</password>
+											</properties>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<build>
 		<plugins>
 			<plugin>
@@ -114,51 +169,7 @@
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.2.Final</version>
-				<configuration>
-					<jvm-args>-Xdebug
-						-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8787</jvm-args>
-				</configuration>
-				<executions>
-					<execution>
-						<id>deploy_jdbc_driver</id>
-						<phase>package</phase>
-						<goals>
-							<goal>deploy-artifact</goal>
-						</goals>
-						<configuration>
-							<groupId>${postgresql.driver.groupId}</groupId>
-							<artifactId>${postgresql.driver.artifactId}</artifactId>
-							<version>${postgresql.driver.version}</version>
-							<name>postgresql</name>
-							<driver-name>postgresql</driver-name>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add_datasource</id>
-						<phase>package</phase>
-						<goals>
-							<goal>add-resource</goal>
-						</goals>
-						<configuration>
-							<address>subsystem=datasources,data-source=java:jboss/datasources/lamusique</address>
-							<resources>
-								<resource>
-									<properties>
-										<jndi-name>java:jboss/datasources/lamusique</jndi-name>
-										<connection-url>${db.jdbc.url}</connection-url>
-										<driver-class>org.postgresql.Driver</driver-class>
-										<driver-name>postgresql</driver-name>
-										<enabled>true</enabled>
-										<database-name>${postgresql.db.schema}</database-name>
-										<user-name>${postgresql.db.user}</user-name>
-										<password>${postgresql.db.password}</password>
-									</properties>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
+				<version>${wildfly.plugin.version}</version>
 			</plugin>
 		</plugins>
 	</build>
