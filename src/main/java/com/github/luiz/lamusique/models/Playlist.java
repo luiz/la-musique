@@ -13,6 +13,7 @@ public class Playlist {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private String cover;
 
 	public Integer getId() {
 		return this.id;
@@ -28,5 +29,13 @@ public class Playlist {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCover() {
+		return cover;
+	}
+
+	public void setCover(String cover) {
+		this.cover = cover;
 	}
 }
