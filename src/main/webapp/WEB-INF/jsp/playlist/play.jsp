@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 <a href="${linkTo[PlaylistController].listAll()}">Home</a>
 <h2>${playlist.name}</h2>
-<img src="${playlist.cover}" alt="Playlist cover"/>
+<img src="<c:url value='/assets/playlist-art/${playlist.cover}'/>" alt="Playlist cover" />
 <ol>
 	<c:forEach var="song" items="${playlist.songs}" varStatus="status">
 		<li>

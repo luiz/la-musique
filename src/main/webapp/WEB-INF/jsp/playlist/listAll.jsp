@@ -6,7 +6,7 @@
 		<li>
 			<figure>
 				<a href="${linkTo[PlaylistController].open(playlist)}">
-					<img src="${playlist.cover}" alt="Playlist cover"/>
+					<img src="<c:url value='/assets/playlist-art/${playlist.cover}'/>" alt="Playlist cover"/>
 					<figcaption>${playlist.name}</figcaption>
 				</a>
 			</figure>

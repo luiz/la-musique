@@ -4,3 +4,4 @@
 .settings
 pom.xml
 src/main/webapp/assets/songs/*
+src/main/webapp/assets/playlist-art/*
