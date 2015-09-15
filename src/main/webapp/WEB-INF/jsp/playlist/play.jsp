@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="lfn" uri="http://lamusique.com/fn" %>
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 <a href="${linkTo[PlaylistController].listAll()}">Home</a>
 <h2>${playlist.name}</h2>
-<img src="${playlist.cover}" alt="Playlist cover"/>
+<img src="${lfn:playlistArt(playlist)}" alt="Playlist cover"/>
 <ol>
 	<c:forEach var="song" items="${playlist.songs}" varStatus="status">
 		<li>
@@ -22,7 +23,7 @@
 		<dd>
 			<audio autoplay controls>
 				Sorry, your browser does not support audio playback
-				<source src="${song.file}">
+				<source src="${lfn:songFile(song)}">
 			</audio>
 		</dd>
 	</dl>
