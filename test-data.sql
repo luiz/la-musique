@@ -13,18 +13,18 @@ INSERT INTO artist (artist_id, name) VALUES
 
 -- Songs
 INSERT INTO song (song_id, artist_id, name, file) VALUES
-(1, 1, 'Fuel', 'fuel.ogg'),
-(2, 1, 'Nothing else matters', 'nothing-else-matters.ogg'),
-(3, 2, 'Two minutes to midnight', 'two-minutes-to-midnight.ogg'),
-(4, 2, 'Run to the hills', 'run-to-the-hills.ogg'),
-(5, 2, 'Rainmaker', 'rainmaker.ogg'),
-(6, 3, 'Blitzkrieg bop', 'blitzkrieg-bop.ogg'),
-(7, 3, 'I wanna be sedated', 'i-wanna-be-sedated.ogg'),
-(8, 3, 'Pet semetary', 'pet-semetary.ogg'),
-(9, 4, 'Garota de Ipanema', 'garota-de-ipanema.ogg'),
-(10, 4, 'Águas de março', 'aguas-de-marco.ogg'),
-(11, 5, 'Aquarela', 'aquarela.ogg'),
-(12, 5, 'Tarde em Itapuã', 'tarde-em-itapua.ogg');
+(1, 1, 'Fuel', 'fuel'),
+(2, 1, 'Nothing else matters', 'nothing-else-matters'),
+(3, 2, 'Two minutes to midnight', 'two-minutes-to-midnight'),
+(4, 2, 'Run to the hills', 'run-to-the-hills'),
+(5, 2, 'Rainmaker', 'rainmaker'),
+(6, 3, 'Blitzkrieg bop', 'blitzkrieg-bop'),
+(7, 3, 'I wanna be sedated', 'i-wanna-be-sedated'),
+(8, 3, 'Pet semetary', 'pet-semetary'),
+(9, 4, 'Garota de Ipanema', 'garota-de-ipanema'),
+(10, 4, 'Águas de março', 'aguas-de-marco'),
+(11, 5, 'Aquarela', 'aquarela'),
+(12, 5, 'Tarde em Itapuã', 'tarde-em-itapua');
 
 -- Playlists
 INSERT INTO playlist (playlist_id, name, cover) VALUES

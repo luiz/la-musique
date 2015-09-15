@@ -22,7 +22,8 @@
 		<dd>
 			<audio autoplay controls>
 				Sorry, your browser does not support audio playback
-				<source src="${song.file}">
+				<source src="<c:url value='/assets/songs/${song.file}.mp3'/>" type="audio/mpeg">
+				<source src="<c:url value='/assets/songs/${song.file}.ogg'/>" type="audio/ogg">
 			</audio>
 		</dd>
 	</dl>
