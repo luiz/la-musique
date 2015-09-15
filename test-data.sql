@@ -20,7 +20,7 @@ INSERT INTO song (song_id, artist_id, name, file) VALUES
 (5, 2, 'Rainmaker', 'rainmaker.ogg'),
 (6, 3, 'Blitzkrieg bop', 'blitzkrieg-bop.ogg'),
 (7, 3, 'I wanna be sedated', 'i-wanna-be-sedated.ogg'),
-(8, 3, 'Pet cemetary', 'pet-cemetary.ogg'),
+(8, 3, 'Pet semetary', 'pet-semetary.ogg'),
 (9, 4, 'Garota de Ipanema', 'garota-de-ipanema.ogg'),
 (10, 4, 'Águas de março', 'aguas-de-marco.ogg'),
 (11, 5, 'Aquarela', 'aquarela.ogg'),
