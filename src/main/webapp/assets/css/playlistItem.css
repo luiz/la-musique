@@ -1,0 +1,17 @@
+.playlistItem {
+	background-color: #FFE;
+	box-shadow: 3px 3px #CCA;
+	margin: .5em 0;
+}
+.playlistItem a {
+	text-decoration: none;
+	color: inherit;
+}
+.playlistItem-cover {
+	margin-top: 2.5%;
+	width: 95%;
+}
+.playlistItem-description {
+	color: #555;
+	padding: .5em;
+}

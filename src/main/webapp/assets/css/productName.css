@@ -1,0 +1,9 @@
+.productName {
+	font-size: 2em;
+	text-align: center;
+	padding: .5em;
+	font-family: 'Molle', cursive;
+	background-color: gold; /* fallback */
+	background: gold url('../images/logo.svg') .5em center/1em no-repeat;
+	border-bottom: 2px solid goldenrod;
+}
