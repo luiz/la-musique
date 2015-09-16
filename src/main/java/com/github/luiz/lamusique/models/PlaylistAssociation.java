@@ -2,6 +2,7 @@ package com.github.luiz.lamusique.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,12 +24,12 @@ public class PlaylistAssociation implements Comparable<PlaylistAssociation> {
 	@Column(name = "playlist_association_id")
 	private Integer id;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "song_id", nullable = false)
 	@NotNull
 	private Song song;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "playlist_id", nullable = false)
 	@NotNull
 	private Playlist playlist;

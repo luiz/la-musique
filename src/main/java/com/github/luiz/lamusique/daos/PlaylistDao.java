@@ -13,7 +13,7 @@ public class PlaylistDao {
 	private EntityManager manager;
 
 	public List<Playlist> all() {
-		return this.manager.createQuery("select p from Playlist p", Playlist.class).getResultList();
+		return this.manager.createNamedQuery("playlist.all", Playlist.class).getResultList();
 	}
 
 	public void save(final Playlist playlist) {
@@ -21,7 +21,9 @@ public class PlaylistDao {
 	}
 
 	public Playlist findById(final Integer id) {
-		return this.manager.find(Playlist.class, id);
+		return this.manager.createNamedQuery("playlist.byId", Playlist.class)
+				.setParameter("id", id)
+				.getSingleResult();
 	}
 
 	public void remove(final Playlist playlist) {

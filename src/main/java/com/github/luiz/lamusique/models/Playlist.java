@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -18,6 +20,15 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "playlist")
+@NamedQueries({
+	@NamedQuery(name = "playlist.all", query = "select p from Playlist p"),
+	@NamedQuery(name = "playlist.byId", query =
+			"select p from Playlist p" +
+			" join fetch p.associations assocs" +
+			" join fetch assocs.song s" +
+			" join fetch s.artist" +
+			" where p.id = :id")
+})
 public class Playlist {
 
 	@Id
@@ -33,7 +44,7 @@ public class Playlist {
 	@NotNull
 	private String cover;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "playlist")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "playlist")
 	@OrderBy("songOrder")
 	private Set<PlaylistAssociation> associations = new TreeSet<>();
 
