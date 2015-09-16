@@ -2,6 +2,8 @@
 	background-color: #FFE;
 	box-shadow: 3px 3px #CCA;
 	margin: .5em 0;
+	max-width: 360px;
+	display: inline-block;
 }
 .playlistListItem a {
 	text-decoration: none;
