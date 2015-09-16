@@ -14,8 +14,12 @@
 </ol>
 <section>
 	<nav>
-		<a href="${playlist.hasPrevious(index) ? linkTo[PlaylistController].play(playlist, index - 1) : 'javascript:void(0)'}">Previous</a>
-		<a href="${playlist.hasNext(index) ? linkTo[PlaylistController].play(playlist, index + 1) : 'javascript:void(0)'}">Next</a>
+		<c:if test="${playlist.hasPrevious(index)}">
+			<a href="${linkTo[PlaylistController].play(playlist, index - 1)}">Previous</a>
+		</c:if>
+		<c:if test="${playlist.hasNext(index)}">
+			<a href="${linkTo[PlaylistController].play(playlist, index + 1)}">Next</a>
+		</c:if>
 	</nav>
 	<dl>
 		<dt>${song.artist.name} - ${song.name}</dt>
