@@ -4,16 +4,18 @@
 	<a href="${linkTo[PlaylistController].listAll()}" class="playlist-backButton">Home</a>
 	<h2>${playlist.name}</h2>
 </header>
-<img src="<c:url value='/assets/playlist-art/${playlist.cover}'/>" alt="Playlist cover" class="playlist-cover"/>
-<ol class="playlistSongs">
-	<c:forEach var="song" items="${playlist.songs}" varStatus="status">
-		<li class="playlistSongs-item ${status.count == index ? 'playlistSongs-item--current' : ''}">
-			<a href="${linkTo[PlaylistController].play(playlist, status.count)}">
-				${song.artist.name} - ${song.name}
-			</a>
-		</li>
-	</c:forEach>
-</ol>
+<section class="playlist-main">
+	<img src="<c:url value='/assets/playlist-art/${playlist.cover}'/>" alt="Playlist cover" class="playlist-cover"/>
+	<ol class="playlistSongs">
+		<c:forEach var="song" items="${playlist.songs}" varStatus="status">
+			<li class="playlistSongs-item ${status.count == index ? 'playlistSongs-item--current' : ''}">
+				<a href="${linkTo[PlaylistController].play(playlist, status.count)}">
+					${song.artist.name} - ${song.name}
+				</a>
+			</li>
+		</c:forEach>
+	</ol>
+</section>
 <section class="player">
 	<nav class="player-controls">
 		<c:if test="${playlist.hasPrevious(index)}">

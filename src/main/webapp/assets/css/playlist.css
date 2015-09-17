@@ -19,3 +19,17 @@
 	background: transparent url(../images/back.png) center;
 	background: transparent url(../images/back.svg) center/100%;
 }
+.playlist-main {
+	background-color: #110;
+	overflow: hidden;
+}
+
+@media (min-width: 740px) {
+	.playlist-cover {
+		float: right;
+		width: 66%;
+	}
+	.playlist-main .playlistSongs {
+		width: 34%;
+	}
+}
