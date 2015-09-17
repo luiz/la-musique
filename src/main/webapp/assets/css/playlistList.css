@@ -1,0 +1,25 @@
+.playlistList {
+	padding: .5em;
+	text-align: center;
+}
+.playlistList-sectionTitle {
+	font-size: 1.5em;
+	color: #994;
+	margin-top: .5em;
+	margin-bottom: 1em;
+	font-weight: bold;
+}
+.playlistList-newButton {
+	background: gold url(../images/plus.png) center;
+	background: gold url(../images/plus.svg) center/85%;
+	color: black;
+	border-radius: 100%;
+	box-shadow: 2px 2px goldenrod;
+	width: 1em;
+	height: 1em;
+	display: block;
+	margin: .25em auto;
+	font-size: 4em;
+	overflow: hidden;
+	text-indent: 100%;
+}

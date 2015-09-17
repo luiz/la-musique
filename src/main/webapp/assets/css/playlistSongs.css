@@ -1,0 +1,14 @@
+.playlistSongs-item {
+	padding: .75em;
+	list-style: inside decimal;
+	background-color: #664;
+	color: #CCA;
+	border-bottom: 1px solid #110;
+}
+.playlistSongs-item--current {
+	background-color: #AA7;
+	color: #FFF;
+}
+.playlistSongs-item a {
+	color: inherit;
+}

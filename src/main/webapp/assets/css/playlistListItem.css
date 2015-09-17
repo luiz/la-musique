@@ -1,17 +1,17 @@
-.playlistItem {
+.playlistListItem {
 	background-color: #FFE;
 	box-shadow: 3px 3px #CCA;
 	margin: .5em 0;
 }
-.playlistItem a {
+.playlistListItem a {
 	text-decoration: none;
 	color: inherit;
 }
-.playlistItem-cover {
+.playlistListItem-cover {
 	margin-top: 2.5%;
 	width: 95%;
 }
-.playlistItem-description {
+.playlistListItem-description {
 	color: #555;
 	padding: .5em;
 }
