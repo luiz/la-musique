@@ -30,6 +30,24 @@
 	background-image: url(../images/next.png);
 	background-image: url(../images/next.svg);
 }
+.player-control--play {
+	background-image: url(../images/play.png);
+	background-image: url(../images/play.svg);
+}
+.player-control--pause {
+	background-image: url(../images/pause.png);
+	background-image: url(../images/pause.svg);
+}
+.player-control--play,
+.player-control--pause {
+	display: none;
+	visibility: hidden;
+}
+.player-controls--paused .player-control--play,
+.player-controls--playing .player-control--pause {
+	display: inline-block;
+	visibility: visible;
+}
 .player-control--disabled {
 	background-color: #221;
 	opacity: 0.5;

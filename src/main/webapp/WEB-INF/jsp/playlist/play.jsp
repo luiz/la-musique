@@ -16,7 +16,7 @@
 		</c:forEach>
 	</ol>
 </section>
-<section class="player">
+<section class="player" data-player>
 	<nav class="player-controls">
 		<c:if test="${playlist.hasPrevious(index)}">
 			<a href="${linkTo[PlaylistController].play(playlist, index - 1)}" class="player-control player-control--prev">Previous</a>
