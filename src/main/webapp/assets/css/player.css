@@ -4,7 +4,8 @@
 	text-align: center;
 }
 .player-controls {
-	display: block;
+	display: inline-block;
+	vertical-align: middle;
 	padding-top: .25em;
 	font-size: 3em;
 }
@@ -34,6 +35,13 @@
 	opacity: 0.5;
 }
 .player-songInfo {
-	display: block;
+	display: inline-block;
+	margin-left: 1em;
+	vertical-align: middle;
 	padding: .25em;
+}
+.player-nativeControls {
+	display: block;
+	margin: 0 auto;
+	padding: .5em;
 }

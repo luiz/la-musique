@@ -34,7 +34,7 @@
 	<span class="player-songInfo">
 		${song.artist.name} - ${song.name}
 	</span>
-	<audio autoplay controls>
+	<audio autoplay controls class="player-nativeControls">
 		Sorry, your browser does not support audio playback
 		<source src="<c:url value='/assets/songs/${song.file}.mp3'/>" type="audio/mpeg">
 		<source src="<c:url value='/assets/songs/${song.file}.ogg'/>" type="audio/ogg">
