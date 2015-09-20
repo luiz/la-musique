@@ -13,8 +13,13 @@
 	<link rel="stylesheet" href="<c:url value='/assets/css/player.css'/>">
 	<script src="<c:url value='/assets/js/async-define.js'/>"></script>
 	<script>const contextPath = '<c:url value="/"/>'.replace(/;jsessionid.*/, '')</script>
+	<script async src="<c:url value='/assets/js/three.min.js'/>"></script>
 	<script async src="<c:url value='/assets/js/progressBar.js'/>"></script>
 	<script async src="<c:url value='/assets/js/player.js'/>"></script>
+	<script async src="<c:url value='/assets/js/requestAnimationFrame.js'/>"></script>
+	<script async src="<c:url value='/assets/js/improvedNoise.js'/>"></script>
+	<script async src="<c:url value='/assets/js/reactiveWaveform.js'/>"></script>
+	<script async src="<c:url value='/assets/js/visualizer.js'/>"></script>
 	<meta charset="UTF-8">
 	<link rel="icon" href="<c:url value='/assets/images/logo.ico'/>">
 	<meta name="viewport" content="width=device-width">

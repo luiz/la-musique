@@ -91,7 +91,7 @@
             debug && console.log('all dependencies for', name, 'were satisfied; instantiating');
 
             // execute this module
-            result = factory.apply(this, params);
+            result = (typeof factory === 'function') ? factory.apply(this, params) : factory;
 
             if (result) {
                 debug && console.log('module returned value');

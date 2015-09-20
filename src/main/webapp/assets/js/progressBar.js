@@ -17,7 +17,7 @@ define('progressBar', [], function() {
 		};
 		const seek = function(event) {
 			if (seeking) {
-				const maxWidth = parseInt(getComputedStyle(progressBar).width.replace('px', ''));
+				const maxWidth = progressBar.offsetWidth;
 				const newValue = (event.clientX - progressBar.offsetLeft) * 100 / maxWidth;
 				const updateValueEvent = new Event('input');
 				updateValueEvent.newValue = newValue;
