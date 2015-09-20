@@ -39,7 +39,7 @@ public class PlaylistController {
 
 	@Get("/playlists/{playlist.id}")
 	public void open(final Playlist playlist) {
-		this.result.forwardTo(this).play(playlist, 1);
+		this.result.redirectTo(this).play(playlist, 1);
 	}
 
 	@Get("/playlists/{playlist.id}/songs/{index}")

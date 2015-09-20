@@ -1,8 +1,16 @@
-define('player', ['progressBar'], function(ProgressBar) {
+define('player', ['progressBar', 'audioSupport', 'domLoaded'], function(ProgressBar, audioSupport, domLoaded) {
 	'use strict';
 
-	function audioSupported() {
-		return ('canPlayType' in document.createElement('audio'));
+	function togglePlayPauseClasses(audioTag, buttonsContainer) {
+		return () => {
+			if (audioTag.paused) {
+				buttonsContainer.classList.remove('player-controls--playing');
+				buttonsContainer.classList.add('player-controls--paused');
+			} else {
+				buttonsContainer.classList.add('player-controls--playing');
+				buttonsContainer.classList.remove('player-controls--paused');
+			}
+		};
 	}
 	function addPlayPauseButton(buttonsContainer, audioTag) {
 		const playButton = document.createElement('a');
@@ -14,22 +22,17 @@ define('player', ['progressBar'], function(ProgressBar) {
 		playButton.className = 'player-control player-control--play';
 		pauseButton.className = 'player-control player-control--pause';
 		playButton.addEventListener('click', function(event) {
-			buttonsContainer.classList.add('player-controls--playing');
-			buttonsContainer.classList.remove('player-controls--paused');
 			audioTag.play();
 			event.preventDefault();
 		});
 		pauseButton.addEventListener('click', function(event) {
-			buttonsContainer.classList.remove('player-controls--playing');
-			buttonsContainer.classList.add('player-controls--paused');
 			audioTag.pause();
 			event.preventDefault();
 		});
 		buttonsContainer.classList.add('player-controls--playing');
-		audioTag.addEventListener('ended', function() {
-			buttonsContainer.classList.remove('player-controls--playing');
-			buttonsContainer.classList.add('player-controls--paused');
-		});
+		audioTag.addEventListener('ended', togglePlayPauseClasses(audioTag, buttonsContainer));
+		audioTag.addEventListener('playing', togglePlayPauseClasses(audioTag, buttonsContainer));
+		audioTag.addEventListener('pause', togglePlayPauseClasses(audioTag, buttonsContainer));
 		const nextButton = buttonsContainer.querySelector('.player-control--next');
 		buttonsContainer.insertBefore(playButton, nextButton);
 		buttonsContainer.insertBefore(document.createTextNode(' '), nextButton);
@@ -72,14 +75,10 @@ define('player', ['progressBar'], function(ProgressBar) {
 		}
 	}
 
-	if (!audioSupported()) {
+	if (!audioSupport) {
 		console.log('Native audio playback not supported');
 		return;
 	}
 
-	if (document.readyState === 'interactive' || document.readyState === 'complete') {
-		configurePlayers();
-	} else {
-		document.addEventListener('DOMContentLoaded', configurePlayers);
-	}
+	domLoaded(configurePlayers);
 });

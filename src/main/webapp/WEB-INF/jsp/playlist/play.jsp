@@ -22,13 +22,13 @@
 			<a href="${linkTo[PlaylistController].play(playlist, index - 1)}" class="player-control player-control--prev">Previous</a>
 		</c:if>
 		<c:if test="${not playlist.hasPrevious(index)}">
-			<span class="player-control player-control--prev player-control--disabled">Previous</span>
+			<a class="player-control player-control--prev player-control--disabled">Previous</a>
 		</c:if>
 		<c:if test="${playlist.hasNext(index)}">
 			<a href="${linkTo[PlaylistController].play(playlist, index + 1)}" class="player-control player-control--next">Next</a>
 		</c:if>
 		<c:if test="${not playlist.hasNext(index)}">
-			<span class="player-control player-control--next player-control--disabled">Next</span>
+			<a class="player-control player-control--next player-control--disabled">Next</a>
 		</c:if>
 	</nav>
 	<span class="player-songInfo">

@@ -14,8 +14,12 @@
 	<script src="<c:url value='/assets/js/async-define.js'/>"></script>
 	<script>const contextPath = '<c:url value="/"/>'.replace(/;jsessionid.*/, '')</script>
 	<script async src="<c:url value='/assets/js/three.min.js'/>"></script>
+	<script async src="<c:url value='/assets/js/xr.js'/>"></script>
+	<script async src="<c:url value='/assets/js/domLoaded.js'/>"></script>
+	<script async src="<c:url value='/assets/js/audioSupport.js'/>"></script>
 	<script async src="<c:url value='/assets/js/progressBar.js'/>"></script>
 	<script async src="<c:url value='/assets/js/player.js'/>"></script>
+	<script async src="<c:url value='/assets/js/autoPlayer.js'/>"></script>
 	<script async src="<c:url value='/assets/js/requestAnimationFrame.js'/>"></script>
 	<script async src="<c:url value='/assets/js/improvedNoise.js'/>"></script>
 	<script async src="<c:url value='/assets/js/reactiveWaveform.js'/>"></script>

@@ -50,6 +50,7 @@
             name = argv[argc - 3],
             dependencies = argv[argc - 2] || [],
             factory = argv[argc - 1],
+            module = {exports: exports},
 
             // helper variables
             params = [],
@@ -72,6 +73,9 @@
             } else if (dependency_name === 'exports') {
                 debug && console.log('pushing exports');
                 params.push(exports);
+            } else if (dependency_name === 'module') {
+                debug && console.log('pushing module');
+                params.push(module);
             } else {
                 debug && console.log('dependency not loaded; waiting on it');
 
@@ -99,7 +103,7 @@
             } else {
                 // assuming result is in exports object
                 debug && console.log('module did not return value; assuming exports was used');
-                modules[name] = exports;
+                modules[name] = module.exports;
             }
 
             // execute others waiting for this module
